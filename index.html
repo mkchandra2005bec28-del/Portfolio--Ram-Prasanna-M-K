@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ram Prasanna | Portfolio</title>
+  <meta name="description" content="Portfolio of Ram Prasanna">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="nav">
+    <a href="#home" class="logo">Ram Prasanna</a>
+    <nav id="menu" class="links">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="theme-btn" class="icon-btn" aria-label="Toggle light or dark theme">◐</button>
+    <button id="menu-btn" class="icon-btn menu-btn" aria-label="Open menu">☰</button>
+  </header>
+
+  <main>
+
+    <!-- ===== HOME ===== -->
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <p class="muted">Hi, I'm</p>
+        <h1>Ram Prasanna</h1>
+        <!-- EDIT: your role / tagline -->
+        <p class="tagline">Your role or tagline goes here.</p>
+        <!-- EDIT: 1-2 sentences about you -->
+        <p class="lead">A short introduction about yourself: what you study or do, and what you want to build.</p>
+        <div class="actions">
+          <a class="btn primary" href="resume.pdf" target="_blank">View resume</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <!-- EDIT: replace profile.jpg with your photo (keep the file name or change src) -->
+      <div class="photo">
+        <img src="profile.jpg" alt="Ram Prasanna" onerror="this.remove()">
+        <span class="initials">RP</span>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section">
+      <h2>About me</h2>
+      <!-- EDIT: write about yourself -->
+      <p class="lead">Write a few lines about your background, interests and goals.</p>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section id="education" class="section">
+      <h2>Education</h2>
+      <div class="grid">
+        <!-- EDIT: copy this card for each school / college -->
+        <article class="card">
+          <h3>Degree or course name</h3>
+          <p>College / school name</p>
+          <p class="muted">2024 – Present · CGPA / Percentage</p>
+        </article>
+        <article class="card">
+          <h3>Higher secondary</h3>
+          <p>School name</p>
+          <p class="muted">Year – Year · Percentage</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Languages</h3>
+          <!-- EDIT: add or remove <li> items -->
+          <ul class="tags"><li>Skill 1</li><li>Skill 2</li><li>Skill 3</li></ul>
+        </article>
+        <article class="card">
+          <h3>Tools &amp; technologies</h3>
+          <ul class="tags"><li>Tool 1</li><li>Tool 2</li><li>Tool 3</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="grid">
+        <!-- EDIT: copy this card for each project -->
+        <article class="card project">
+          <img src="project1.jpg" alt="Project 1 screenshot" onerror="this.remove()">
+          <h3>Project title</h3>
+          <p>One or two lines on what it does and what you built.</p>
+          <ul class="tags"><li>Tech 1</li><li>Tech 2</li></ul>
+          <a class="link" href="#" target="_blank">View project</a>
+        </article>
+        <article class="card project">
+          <img src="project2.jpg" alt="Project 2 screenshot" onerror="this.remove()">
+          <h3>Project title</h3>
+          <p>One or two lines on what it does and what you built.</p>
+          <ul class="tags"><li>Tech 1</li><li>Tech 2</li></ul>
+          <a class="link" href="#" target="_blank">View project</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== CERTIFICATES ===== -->
+    <section id="certificates" class="section">
+      <h2>Certificates &amp; achievements</h2>
+      <div class="grid">
+        <!-- EDIT: copy this card for each certificate -->
+        <article class="card project">
+          <a href="cert1.jpg" target="_blank"><img src="cert1.jpg" alt="Certificate 1" onerror="this.remove()"></a>
+          <h3>Certificate title</h3>
+          <p class="muted">Issuer · Year</p>
+        </article>
+        <article class="card project">
+          <a href="cert2.jpg" target="_blank"><img src="cert2.jpg" alt="Certificate 2" onerror="this.remove()"></a>
+          <h3>Certificate title</h3>
+          <p class="muted">Issuer · Year</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="contact">
+        <div>
+          <p class="lead">Open to projects, internships and conversations.</p>
+          <!-- EDIT: your details -->
+          <p><span class="muted">Email</span><br><a href="mailto:you@example.com">you@example.com</a></p>
+          <p><span class="muted">Phone</span><br>+91 00000 00000</p>
+          <p><span class="muted">Location</span><br>City, State, Country</p>
+          <p class="socials">
+            <a href="https://github.com/your-username" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/your-username" target="_blank">LinkedIn</a>
+          </p>
+        </div>
+        <!-- EDIT: get a free key at web3forms.com and paste it below -->
+        <form action="https://api.web3forms.com/submit" method="POST" class="form">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
+          <label>Name<input type="text" name="name" required></label>
+          <label>Email<input type="email" name="email" required></label>
+          <label>Message<textarea name="message" rows="5" required></textarea></label>
+          <button class="btn primary" type="submit">Send message</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Ram Prasanna</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
