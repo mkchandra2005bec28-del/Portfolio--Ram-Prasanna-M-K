@@ -1,38 +1,94 @@
+
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.documentElement;
 
-  // 1. Light / dark theme (remembers the choice)
-  const saved = localStorage.getItem('theme');
-  if (saved) root.setAttribute('data-theme', saved);
-  document.getElementById('theme-btn').addEventListener('click', () => {
-    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-    root.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  });
+  // 1. Light / dark theme
+  const themeBtn = document.getElementById('theme-btn');
+  const savedTheme = localStorage.getItem('theme');
 
-  // 2. Mobile menu
-  const menu = document.getElementById('menu');
-  document.getElementById('menu-btn').addEventListener('click', () => menu.classList.toggle('open'));
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+  if (savedTheme === 'light' || savedTheme === 'dark') {
+    root.setAttribute('data-theme', savedTheme);
+  }
 
-  // 3. Highlight the nav link of the section in view
-  const links = menu.querySelectorAll('a');
-  const sections = document.querySelectorAll('main section[id]');
-  const spy = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
-      }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const currentTheme = root.getAttribute('data-theme');
+      const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+      root.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('theme', nextTheme);
     });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  sections.forEach(s => spy.observe(s));
+  }
 
-  // 4. Fade sections in once as they scroll into view
-  const reveal = new IntersectionObserver((entries, obs) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.section').forEach(s => { s.classList.add('reveal'); reveal.observe(s); });
+  // 2. Mobile navigation menu
+  const menu = document.getElementById('menu');
+  const menuBtn = document.getElementById('menu-btn');
 
-  // 5. Footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
+  if (menu && menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('open');
+      });
+    });
+  }
+
+  // 3. Highlight the navigation link for the visible section
+  if (menu && 'IntersectionObserver' in window) {
+    const links = menu.querySelectorAll('a');
+    const sections = document.querySelectorAll('main section[id]');
+
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(link => {
+            const isActive =
+              link.getAttribute('href') === '#' + entry.target.id;
+
+            link.classList.toggle('active', isActive);
+          });
+        }
+      });
+    }, {
+      rootMargin: '-45% 0px -50% 0px'
+    });
+
+    sections.forEach(section => navObserver.observe(section));
+  }
+
+  // 4. Reveal sections while scrolling
+  const sectionsToReveal = document.querySelectorAll('.section');
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    sectionsToReveal.forEach(section => {
+      section.classList.add('reveal');
+      revealObserver.observe(section);
+    });
+  } else {
+    // Show all sections in browsers without IntersectionObserver
+    sectionsToReveal.forEach(section => {
+      section.classList.add('show');
+    });
+  }
+
+  // 5. Automatically update the footer year
+  const yearElement = document.getElementById('year');
+
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
 });
